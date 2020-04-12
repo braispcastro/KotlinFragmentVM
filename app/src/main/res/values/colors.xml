@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F1F1F1</color>
+    <color name="colorPrimaryDark">#1F1F1F</color>
+    <color name="colorAccent">#680D18</color>
+    <color name="backgroundColor">#DFDFDF</color>
+
+    <color name="colorSectionWoman">#831029</color>
+    <color name="colorSectionMan">#055193</color>
+    <color name="colorSectionChild">#079305</color>
+</resources>
