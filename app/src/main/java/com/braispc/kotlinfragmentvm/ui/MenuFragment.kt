@@ -7,10 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.braispc.kotlinfragmentvm.R
 import com.braispc.kotlinfragmentvm.databinding.MenuFragmentBinding
-import com.braispc.kotlinfragmentvm.viewmodel.MainViewModel
 import com.braispc.kotlinfragmentvm.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.main_activity.*
-import kotlinx.android.synthetic.main.menu_fragment.*
 
 class MenuFragment : BaseFragment() {
 
@@ -27,9 +25,13 @@ class MenuFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.menu_fragment, container, false)
         viewModel = MenuViewModel()
 
+        // Properties
         viewModel.updateText.observe(viewLifecycleOwner, Observer { btnUpdateText ->
             binding.btnUpdate.text = btnUpdateText
         })
+
+        // Buttons
+        binding.btnUpdate.setOnClickListener { viewModel.onUpdateTap() }
 
         return binding.root
     }
@@ -42,8 +44,6 @@ class MenuFragment : BaseFragment() {
 
         (activity as AppCompatActivity).toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_home)
         (activity as AppCompatActivity).toolbar.setNavigationOnClickListener() {}
-
-        btnUpdate.setOnClickListener() { }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

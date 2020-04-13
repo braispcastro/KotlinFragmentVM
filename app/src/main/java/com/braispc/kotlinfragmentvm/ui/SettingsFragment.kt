@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.braispc.kotlinfragmentvm.R
 import com.braispc.kotlinfragmentvm.databinding.SettingsFragmentBinding
@@ -26,6 +27,11 @@ class SettingsFragment: BaseFragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
         viewModel = SettingsViewModel()
+
+        // Properties
+        viewModel.mainText.observe(viewLifecycleOwner, Observer { messageText ->
+            binding.message.text = messageText
+        })
 
         return binding.root
     }

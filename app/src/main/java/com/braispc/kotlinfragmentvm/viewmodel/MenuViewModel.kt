@@ -5,10 +5,15 @@ import androidx.lifecycle.ViewModel
 
 class MenuViewModel: ViewModel() {
 
+    var counter: Int = 0
     var updateText: MutableLiveData<String> = MutableLiveData()
 
     init {
-        updateText.value = "U P D A T E"
+        updateText.value = "UPDATE"
+    }
+
+    fun onUpdateTap() {
+        updateText.value = "UPDATE (${++counter})"
     }
 
 }
