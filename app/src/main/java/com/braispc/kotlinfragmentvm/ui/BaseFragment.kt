@@ -18,7 +18,7 @@ open class BaseFragment: Fragment() {
         val id = item.itemId
 
         if (id == R.id.settingsMenu) {
-            findNavController().navigate(R.id.settingsFragment)
+            findNavController().navigate(R.id.action_menuFragment_to_settingsFragment)
         }
 
         return super.onOptionsItemSelected(item)
