@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.braispc.kotlinfragmentvm.R
-import com.braispc.kotlinfragmentvm.ui.main.MainViewModel
+import com.braispc.kotlinfragmentvm.databinding.SettingsFragmentBinding
+import com.braispc.kotlinfragmentvm.viewmodel.SettingsViewModel
 import kotlinx.android.synthetic.main.main_activity.*
 
 class SettingsFragment: BaseFragment() {
@@ -16,16 +18,21 @@ class SettingsFragment: BaseFragment() {
         fun newInstance() = SettingsFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var binding: SettingsFragmentBinding
+    private lateinit var viewModel: SettingsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.settings_fragment, container, false)
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
+        viewModel = SettingsViewModel()
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = MainViewModel()
+
 
         (activity as AppCompatActivity).toolbar.title = "Settings"
         (activity as AppCompatActivity).toolbar.subtitle = null

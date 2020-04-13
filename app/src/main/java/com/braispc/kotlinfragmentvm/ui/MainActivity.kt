@@ -1,4 +1,4 @@
-package com.braispc.kotlinfragmentvm.ui.main
+package com.braispc.kotlinfragmentvm.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
