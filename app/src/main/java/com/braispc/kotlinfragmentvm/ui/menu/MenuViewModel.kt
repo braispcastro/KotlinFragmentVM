@@ -1,9 +1,9 @@
 package com.braispc.kotlinfragmentvm.ui.menu
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.braispc.kotlinfragmentvm.ui.MainViewModel
 
-class MenuViewModel: ViewModel() {
+class MenuViewModel: MainViewModel() {
 
     var counter: Int = 0
     var updateText: MutableLiveData<String> = MutableLiveData()

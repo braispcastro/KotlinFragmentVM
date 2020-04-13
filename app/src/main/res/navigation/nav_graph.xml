@@ -27,6 +27,6 @@
         android:id="@+id/settingsFragment"
         android:name="com.braispc.kotlinfragmentvm.ui.settings.SettingsFragment"
         android:label="settings_fragment"
-        tools:layout="@layout/settings_fragment" />
+        tools:layout="@layout/settings_fragment"/>
 
 </navigation>

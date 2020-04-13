@@ -39,12 +39,13 @@ class SettingsFragment: BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
         (activity as AppCompatActivity).toolbar.title = "Settings"
         (activity as AppCompatActivity).toolbar.subtitle = null
 
         (activity as AppCompatActivity).toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_arrow_back)
-        (activity as AppCompatActivity).toolbar.setNavigationOnClickListener() { findNavController().navigateUp() }
+        (activity as AppCompatActivity).toolbar.setNavigationOnClickListener() {
+            findNavController().popBackStack()
+        }
     }
 
 }

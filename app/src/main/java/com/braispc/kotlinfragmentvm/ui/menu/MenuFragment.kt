@@ -5,6 +5,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.navGraphViewModels
 import com.braispc.kotlinfragmentvm.R
 import com.braispc.kotlinfragmentvm.databinding.MenuFragmentBinding
 import com.braispc.kotlinfragmentvm.ui.BaseFragment

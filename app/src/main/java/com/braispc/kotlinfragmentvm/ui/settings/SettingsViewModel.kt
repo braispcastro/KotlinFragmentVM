@@ -1,9 +1,9 @@
 package com.braispc.kotlinfragmentvm.ui.settings
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.braispc.kotlinfragmentvm.ui.MainViewModel
 
-class SettingsViewModel: ViewModel() {
+class SettingsViewModel: MainViewModel() {
 
     var mainText: MutableLiveData<String> = MutableLiveData()
 
