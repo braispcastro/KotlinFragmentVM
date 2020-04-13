@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.braispc.kotlinfragmentvm.ui.MenuFragment"
+        android:name="com.braispc.kotlinfragmentvm.ui.menu.MenuFragment"
         android:label="menu_fragment"
         tools:layout="@layout/menu_fragment" >
 
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.braispc.kotlinfragmentvm.ui.SettingsFragment"
+        android:name="com.braispc.kotlinfragmentvm.ui.settings.SettingsFragment"
         android:label="settings_fragment"
         tools:layout="@layout/settings_fragment" />
 

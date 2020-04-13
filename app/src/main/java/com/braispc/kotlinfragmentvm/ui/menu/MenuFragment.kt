@@ -1,4 +1,4 @@
-package com.braispc.kotlinfragmentvm.ui
+package com.braispc.kotlinfragmentvm.ui.menu
 
 import android.os.Bundle
 import android.view.*
@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.braispc.kotlinfragmentvm.R
 import com.braispc.kotlinfragmentvm.databinding.MenuFragmentBinding
-import com.braispc.kotlinfragmentvm.viewmodel.MenuViewModel
+import com.braispc.kotlinfragmentvm.ui.BaseFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MenuFragment : BaseFragment() {

@@ -1,4 +1,4 @@
-package com.braispc.kotlinfragmentvm.ui
+package com.braispc.kotlinfragmentvm.ui.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.braispc.kotlinfragmentvm.R
 import com.braispc.kotlinfragmentvm.databinding.SettingsFragmentBinding
-import com.braispc.kotlinfragmentvm.viewmodel.SettingsViewModel
+import com.braispc.kotlinfragmentvm.ui.BaseFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
 class SettingsFragment: BaseFragment() {

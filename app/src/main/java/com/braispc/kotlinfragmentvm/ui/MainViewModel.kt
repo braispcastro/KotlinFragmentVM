@@ -1,4 +1,4 @@
-package com.braispc.kotlinfragmentvm.viewmodel
+package com.braispc.kotlinfragmentvm.ui
 
 import androidx.lifecycle.ViewModel
 
