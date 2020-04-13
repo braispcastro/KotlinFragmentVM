@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.braispc.kotlinfragmentvm.R
 import com.braispc.kotlinfragmentvm.databinding.SettingsFragmentBinding
 import com.braispc.kotlinfragmentvm.ui.BaseFragment
@@ -20,13 +21,12 @@ class SettingsFragment: BaseFragment() {
     }
 
     private lateinit var binding: SettingsFragmentBinding
-    private lateinit var viewModel: SettingsViewModel
+    private val viewModel: SettingsViewModel by navGraphViewModels(R.id.settingsFragment)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
-        viewModel = SettingsViewModel()
 
         // Properties
         viewModel.mainText.observe(viewLifecycleOwner, Observer { messageText ->
@@ -43,9 +43,7 @@ class SettingsFragment: BaseFragment() {
         (activity as AppCompatActivity).toolbar.subtitle = null
 
         (activity as AppCompatActivity).toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_arrow_back)
-        (activity as AppCompatActivity).toolbar.setNavigationOnClickListener() {
-            findNavController().popBackStack()
-        }
+        (activity as AppCompatActivity).toolbar.setNavigationOnClickListener() { findNavController().popBackStack() }
     }
 
 }

@@ -18,13 +18,12 @@ class MenuFragment : BaseFragment() {
     }
 
     private lateinit var binding: MenuFragmentBinding
-    private lateinit var viewModel: MenuViewModel
+    private val viewModel: MenuViewModel by navGraphViewModels(R.id.menuFragment)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.menu_fragment, container, false)
-        viewModel = MenuViewModel()
 
         // Properties
         viewModel.updateText.observe(viewLifecycleOwner, Observer { btnUpdateText ->
