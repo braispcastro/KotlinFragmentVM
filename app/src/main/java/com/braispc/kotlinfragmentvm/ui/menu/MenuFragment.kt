@@ -1,5 +1,6 @@
 package com.braispc.kotlinfragmentvm.ui.menu
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
 import com.braispc.kotlinfragmentvm.R
+import com.braispc.kotlinfragmentvm.common.Constants
 import com.braispc.kotlinfragmentvm.databinding.MenuFragmentBinding
 import com.braispc.kotlinfragmentvm.ui.BaseFragment
 import kotlinx.android.synthetic.main.main_activity.*
+import kotlinx.android.synthetic.main.menu_fragment.*
 
 class MenuFragment : BaseFragment() {
 
@@ -28,6 +31,10 @@ class MenuFragment : BaseFragment() {
         // Properties
         viewModel.updateText.observe(viewLifecycleOwner, Observer { btnUpdateText ->
             binding.btnUpdate.text = btnUpdateText
+        })
+
+        viewModel.backgroundImage.observe(viewLifecycleOwner, Observer { imgBackgroundSource ->
+            binding.imgBackground.setImageURI(Uri.parse("${Constants.IMAGE_RESOURCE_PATH}${imgBackgroundSource}"))
         })
 
         // Buttons

@@ -7,9 +7,11 @@ class MenuViewModel: MainViewModel() {
 
     var counter: Int = 0
     var updateText: MutableLiveData<String> = MutableLiveData()
+    var backgroundImage: MutableLiveData<String> = MutableLiveData()
 
     init {
         updateText.value = "UPDATE"
+        backgroundImage.value = "space"
     }
 
     fun onUpdateTap() {
