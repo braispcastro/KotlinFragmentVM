@@ -3,7 +3,9 @@ package com.braispc.kotlinfragmentvm.ui.menu
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
@@ -29,12 +31,20 @@ class MenuFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.menu_fragment, container, false)
 
         // Properties
-        viewModel.updateText.observe(viewLifecycleOwner, Observer { btnUpdateText ->
-            binding.btnUpdate.text = btnUpdateText
+        //viewModel.updateText.observe(viewLifecycleOwner, Observer { x ->
+        //    binding.btnUpdate.text = x
+        //})
+
+        viewModel.codeText.observe(viewLifecycleOwner, Observer { x ->
+            binding.txtCode.text = x
         })
 
-        viewModel.backgroundImage.observe(viewLifecycleOwner, Observer { imgBackgroundSource ->
-            binding.imgBackground.setImageURI(Uri.parse("${Constants.IMAGE_RESOURCE_PATH}${imgBackgroundSource}"))
+        viewModel.versionText.observe(viewLifecycleOwner, Observer { x ->
+            binding.txtVersion.text = x
+        })
+
+        viewModel.backgroundImage.observe(viewLifecycleOwner, Observer { x ->
+            binding.imgBackground.setDrawableName(x)
         })
 
         // Buttons

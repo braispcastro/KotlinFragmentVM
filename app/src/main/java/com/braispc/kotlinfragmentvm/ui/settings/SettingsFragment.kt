@@ -29,8 +29,8 @@ class SettingsFragment: BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
 
         // Properties
-        viewModel.mainText.observe(viewLifecycleOwner, Observer { messageText ->
-            binding.message.text = messageText
+        viewModel.mainText.observe(viewLifecycleOwner, Observer { x ->
+            binding.message.text = x
         })
 
         return binding.root
