@@ -1,7 +1,7 @@
-package com.braispc.kotlinfragmentvm.ui.settings
+package com.braispc.kotlinfragmentvm.ui.views.settings
 
 import androidx.lifecycle.MutableLiveData
-import com.braispc.kotlinfragmentvm.ui.MainViewModel
+import com.braispc.kotlinfragmentvm.ui.views.MainViewModel
 
 class SettingsViewModel: MainViewModel() {
 

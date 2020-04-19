@@ -1,4 +1,4 @@
-package com.braispc.kotlinfragmentvm.ui
+package com.braispc.kotlinfragmentvm.ui.views
 
 import android.graphics.PixelFormat
 import android.os.Bundle

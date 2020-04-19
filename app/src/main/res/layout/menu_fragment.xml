@@ -8,13 +8,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.braispc.kotlinfragmentvm.ui.menu.MenuViewModel" />
+            type="com.braispc.kotlinfragmentvm.ui.views.menu.MenuViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.menu.MenuFragment">
+        tools:context=".ui.views.menu.MenuFragment">
 
         <ImageView
             android:id="@+id/imgBackground"
@@ -29,11 +29,30 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <View
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:padding="6dp"
+                android:gravity="center"
+                android:textSize="21sp"
+                android:background="@color/colorPrimary"
+                android:alpha=".8"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMenu"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
-            
+                android:layout_weight="1"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="16dp"
+                tools:listitem="@layout/menu_options_item"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,8 +69,7 @@
                     android:layout_marginStart="16dp"
                     android:gravity="start|center_vertical"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:text="code"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/txtVersion"
@@ -61,8 +79,7 @@
                     android:layout_marginEnd="16dp"
                     android:gravity="end|center_vertical"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:text="version"/>
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
@@ -76,7 +93,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/semi_circle_shape"
-            android:src="@drawable/ic_sync"/>
+            android:src="@drawable/ic_sync" />
 
     </RelativeLayout>
 

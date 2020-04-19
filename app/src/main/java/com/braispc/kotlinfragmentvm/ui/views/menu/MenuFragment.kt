@@ -1,20 +1,26 @@
-package com.braispc.kotlinfragmentvm.ui.menu
+package com.braispc.kotlinfragmentvm.ui.views.menu
 
-import android.net.Uri
+import android.content.Context
+import android.graphics.Rect
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.*
-import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.BindingAdapter
+import androidx.core.view.marginStart
+import androidx.core.view.setMargins
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.braispc.kotlinfragmentvm.R
-import com.braispc.kotlinfragmentvm.common.Constants
 import com.braispc.kotlinfragmentvm.databinding.MenuFragmentBinding
-import com.braispc.kotlinfragmentvm.ui.BaseFragment
+import com.braispc.kotlinfragmentvm.ui.adapters.MenuAdapter
+import com.braispc.kotlinfragmentvm.ui.views.BaseFragment
 import kotlinx.android.synthetic.main.main_activity.*
-import kotlinx.android.synthetic.main.menu_fragment.*
+
 
 class MenuFragment : BaseFragment() {
 
@@ -31,9 +37,9 @@ class MenuFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.menu_fragment, container, false)
 
         // Properties
-        //viewModel.updateText.observe(viewLifecycleOwner, Observer { x ->
-        //    binding.btnUpdate.text = x
-        //})
+        viewModel.updateText.observe(viewLifecycleOwner, Observer { x ->
+            binding.textView.text = x
+        })
 
         viewModel.codeText.observe(viewLifecycleOwner, Observer { x ->
             binding.txtCode.text = x
@@ -45,6 +51,11 @@ class MenuFragment : BaseFragment() {
 
         viewModel.backgroundImage.observe(viewLifecycleOwner, Observer { x ->
             binding.imgBackground.setDrawableName(x)
+        })
+
+        configureMenuGrid()
+        viewModel.itemSource.observe(viewLifecycleOwner, Observer { x ->
+            binding.rvMenu.setRecyclerViewProperties<Int>(x)
         })
 
         // Buttons
@@ -66,6 +77,30 @@ class MenuFragment : BaseFragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.settings_menu, menu)
+    }
+
+    private fun calculateNumberOfColumns(context: Context): Int {
+        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
+        val dpWidth = displayMetrics.widthPixels / displayMetrics.density
+        return (dpWidth / 85).toInt()
+    }
+
+    private fun calculateLeftOffsetForMenuGrid(context: Context): Int {
+        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
+        val dpWidth = displayMetrics.widthPixels / displayMetrics.density
+        val numberOfColumns = calculateNumberOfColumns(context)
+        return (((dpWidth - (80 * numberOfColumns)) / numberOfColumns)).toInt()
+    }
+
+    private fun configureMenuGrid() {
+        var gridLayoutManager = GridLayoutManager(requireContext(), calculateNumberOfColumns(requireContext()))
+        binding.rvMenu.layoutManager = gridLayoutManager
+        binding.rvMenu.adapter = MenuAdapter()
+
+        var offset = calculateLeftOffsetForMenuGrid(requireContext())
+        /*var params = binding.rvMenu.layoutParams as LinearLayout.LayoutParams
+        params.setMargins(params.leftMargin + offset*3, params.topMargin, params.rightMargin - offset, params.bottomMargin)
+        binding.rvMenu.layoutParams = params*/
     }
 
 }

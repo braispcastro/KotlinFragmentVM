@@ -1,4 +1,4 @@
-package com.braispc.kotlinfragmentvm.ui
+package com.braispc.kotlinfragmentvm.ui.views
 
 import android.net.Uri
 import android.os.Bundle
@@ -7,8 +7,10 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.braispc.kotlinfragmentvm.R
 import com.braispc.kotlinfragmentvm.common.Constants
+import com.braispc.kotlinfragmentvm.ui.adapters.MenuAdapter
 
 open class BaseFragment: Fragment() {
 
@@ -17,6 +19,13 @@ open class BaseFragment: Fragment() {
         @BindingAdapter("drawableName")
         fun ImageView.setDrawableName(drawableName: String) {
             setImageURI(Uri.parse("${Constants.IMAGE_RESOURCE_PATH}${drawableName}"))
+        }
+
+        @BindingAdapter("data")
+        fun <T> RecyclerView.setRecyclerViewProperties(items: List<Int>) {
+            if (adapter is MenuAdapter) {
+                (adapter as MenuAdapter).setData(items)
+            }
         }
     }
 

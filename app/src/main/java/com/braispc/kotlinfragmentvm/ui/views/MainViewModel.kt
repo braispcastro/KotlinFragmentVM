@@ -1,4 +1,4 @@
-package com.braispc.kotlinfragmentvm.ui
+package com.braispc.kotlinfragmentvm.ui.views
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
