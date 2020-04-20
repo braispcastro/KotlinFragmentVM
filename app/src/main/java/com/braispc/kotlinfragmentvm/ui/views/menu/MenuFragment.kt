@@ -13,8 +13,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.braispc.kotlinfragmentvm.R
 import com.braispc.kotlinfragmentvm.databinding.MenuFragmentBinding
 import com.braispc.kotlinfragmentvm.ui.adapters.MenuAdapter
@@ -53,8 +55,9 @@ class MenuFragment : BaseFragment() {
             binding.imgBackground.setDrawableName(x)
         })
 
-        configureMenuGrid()
         viewModel.itemSource.observe(viewLifecycleOwner, Observer { x ->
+            binding.rvMenu.adapter = MenuAdapter()
+            binding.rvMenu.layoutManager = LinearLayoutManager(requireContext(), VERTICAL, false)
             binding.rvMenu.setRecyclerViewProperties<Int>(x)
         })
 
@@ -76,31 +79,8 @@ class MenuFragment : BaseFragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+
         inflater.inflate(R.menu.settings_menu, menu)
-    }
-
-    private fun calculateNumberOfColumns(context: Context): Int {
-        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
-        val dpWidth = displayMetrics.widthPixels / displayMetrics.density
-        return (dpWidth / 85).toInt()
-    }
-
-    private fun calculateLeftOffsetForMenuGrid(context: Context): Int {
-        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
-        val dpWidth = displayMetrics.widthPixels / displayMetrics.density
-        val numberOfColumns = calculateNumberOfColumns(context)
-        return (((dpWidth - (80 * numberOfColumns)) / numberOfColumns)).toInt()
-    }
-
-    private fun configureMenuGrid() {
-        var gridLayoutManager = GridLayoutManager(requireContext(), calculateNumberOfColumns(requireContext()))
-        binding.rvMenu.layoutManager = gridLayoutManager
-        binding.rvMenu.adapter = MenuAdapter()
-
-        var offset = calculateLeftOffsetForMenuGrid(requireContext())
-        /*var params = binding.rvMenu.layoutParams as LinearLayout.LayoutParams
-        params.setMargins(params.leftMargin + offset*3, params.topMargin, params.rightMargin - offset, params.bottomMargin)
-        binding.rvMenu.layoutParams = params*/
     }
 
 }

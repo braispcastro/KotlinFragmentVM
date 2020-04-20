@@ -51,6 +51,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 tools:listitem="@layout/menu_options_item"/>
 
             <LinearLayout
