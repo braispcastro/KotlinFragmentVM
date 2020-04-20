@@ -22,6 +22,7 @@ import com.braispc.kotlinfragmentvm.data.MenuDTO
 import com.braispc.kotlinfragmentvm.databinding.MenuFragmentBinding
 import com.braispc.kotlinfragmentvm.ui.adapters.MenuAdapter
 import com.braispc.kotlinfragmentvm.ui.views.BaseFragment
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import kotlinx.android.synthetic.main.main_activity.*
 
 
