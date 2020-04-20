@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.braispc.kotlinfragmentvm.R
+import com.braispc.kotlinfragmentvm.data.MenuDTO
 import com.braispc.kotlinfragmentvm.databinding.MenuFragmentBinding
 import com.braispc.kotlinfragmentvm.ui.adapters.MenuAdapter
 import com.braispc.kotlinfragmentvm.ui.views.BaseFragment
@@ -58,7 +59,7 @@ class MenuFragment : BaseFragment() {
         viewModel.itemSource.observe(viewLifecycleOwner, Observer { x ->
             binding.rvMenu.adapter = MenuAdapter()
             binding.rvMenu.layoutManager = LinearLayoutManager(requireContext(), VERTICAL, false)
-            binding.rvMenu.setRecyclerViewProperties<Int>(x)
+            binding.rvMenu.setRecyclerViewProperties<MenuDTO>(x)
         })
 
         // Buttons
